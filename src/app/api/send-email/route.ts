@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
             <p><strong>ስም:</strong> ${body.studentName}</p>
             <p><strong>ኢሜይል:</strong> ${body.studentEmail}</p>
             <p><strong>Batch:</strong> ${body.batch_selection || 'N/A'}</p>
-            <p>እባክሽ <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/admin">Admin Dashboard</a> ላይ ገብተሽ payment ይፈትሽ።</p>
+            <p>እባክሽ <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://a10tc-platform1.vercel.app'}/admin">Admin Dashboard</a> ላይ ገብተሽ payment ፈትሽ።</p>
           </div>
         `,
       });
