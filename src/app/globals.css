@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #050505;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* ለኒዮን መብራቶች ልዩ ስታይል */
+  .neon-glow-green {
+    text-shadow: 0 0 10px rgba(0, 223, 137, 0.6), 0 0 20px rgba(0, 223, 137, 0.4);
+  }
+
+  .neon-border-purple {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3), inset 0 0 15px rgba(168, 85, 247, 0.1);
+  }
+
+  /* ለፎርም ኢንፑቶች የሚሆን አረንጓዴ ስታይል */
+  .focus-ring-green:focus {
+    outline: 2px solid #00DF89;
+  }
+}
