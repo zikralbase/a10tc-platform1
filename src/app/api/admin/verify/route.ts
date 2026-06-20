@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { supabaseAdmin } from '@/lib/supabase-admin';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
 const TELEGRAM_LINKS: Record<string, string> = {
   'Batch 1': process.env.TELEGRAM_BATCH_1_LINK || 'https://t.me/+UPd0w5ezq69jZWI0',
@@ -45,8 +51,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid batch selection.' }, { status: 400 });
     }
 
-    await resend.emails.send({
-      from: process.env.RESEND_FROM || 'Aisha Tech <onboarding@resend.dev>',
+    await transporter.sendMail({
+      from: `"Aisha Tech" <${process.env.GMAIL_USER}>`,
       to: student.email,
       subject: 'A10TC — Payment Verified! Join Your Telegram Group 🎉',
       html: `
